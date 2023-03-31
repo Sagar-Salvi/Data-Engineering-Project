@@ -204,7 +204,7 @@ Hit Ctrl+D wait and one more time Ctrl+D
 
     i] airflow db init
 
-    ii] airflow users create -u airflow -f airflow -l airflow -r Admin -e sagarsalvi518@gmail.com
+    ii] airflow users create -u airflow -f airflow -l airflow -r Admin -e example@gmail.com
 
 
   Step 10:
