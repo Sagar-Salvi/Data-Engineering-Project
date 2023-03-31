@@ -1,0 +1,86 @@
+Apache Airflow Installation on Ubuntu 22.04 
+
+(Note:- While creating an instance add one inbound rule in the security group - add Custom TCP rule and enter port as 8080)
+
+
+Step 1:
+
+sudo apt update
+
+sudo apt upgrade -y
+
+
+Step 2:
+
+sudo apt install python3-pip
+
+
+Step 3:
+
+sudo apt install sqlite3
+
+
+Step 4:
+
+sudo apt install python3.10-venv  (If it gives an error then run this - sudo apt install python3.8-venv )
+
+
+Step 5:
+
+python3 -m venv venv
+
+source venv/bin/activate
+
+
+Step 6:
+
+i] sudo apt-get install libpq-dev
+
+ii] pip install "apache-airflow[postgres]==2.5.0" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.5.0/constraints-3.7.txt"  
+
+(If It Gives an Error then run this - pip install "apache-airflow[postgres]==2.5.0" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.5.0/constraints-3.10.txt" )
+
+iii] airflow db init
+
+
+Step 7:
+
+i] sudo apt-get install postgresql postgresql-contrib
+
+ii] sudo -i -u postgres
+
+iii] psql
+
+	1] CREATE DATABASE airflow;
+	2] CREATE USER airflow WITH PASSWORD 'airflow';
+	3] GRANT ALL PRIVILEGES ON DATABASE airflow TO airflow;
+
+Hit Ctrl+D wait and one more time Ctrl+D
+
+
+Step 8:
+
+i] cd airflow/
+
+ii] sed -i 's#sqlite:////home/ubuntu/airflow/airflow.db#postgresql+psycopg2://airflow:airflow@localhost/airflow#g' airflow.cfg
+
+iii] sed -i 's#SequentialExecutor#LocalExecutor#g' airflow.cfg
+
+
+Step 9:
+
+i] airflow db init
+
+ii] airflow users create -u airflow -f airflow -l airflow -r Admin -e sagarsalvi518@gmail.com
+
+
+Step 10:
+
+i] airflow webserver &
+
+ii] airflow scheduler  (Run this command on the duplicate session)
+
+
+Now Copy public DNS
+
+eg:   ec2-18-220-39-100.us-east-2.compute.amazonaws.com:8080 (replace this dns with your instance DNS and add port 8080)
