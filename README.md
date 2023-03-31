@@ -92,7 +92,7 @@ Both buckets are created.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Here we have to create one Security Group
+# Here we have to create one Security Group
     
 In Name -> Enter SG name
 
