@@ -1,0 +1,142 @@
+Installing PySpark on AWS EC2 through Jupyter Notebook
+--------------------------------------------------------
+
+Step 1:
+
+First create one Ubuntu instance.
+
+
+Step 2:
+
+Update the packages
+
+- sudo apt-get update
+- sudo apt-get upgrade
+
+
+Step 3:
+
+Now start installing pip and java
+
+	1] Download pip
+
+	- sudo apt install python3-pip
+	
+	Check pip version
+	
+	- pip3 --version
+
+	2] Download Java
+
+	- pip3 install py4j
+
+	- sudo apt-get install openjdk-8-jdk
+
+
+Step 4:
+
+Now Install Jupyter Notebook
+
+- sudo apt install jupyter-notebook
+
+
+Step 5: 
+
+Now We have to Configuring Jupyter Notebook settings
+
+- jupyter notebook --generate-config
+
+After this commnad one .py file is created. So we have to configure it.
+
+	1] - cd .jupyter
+
+	2] - nano jupyter_notebook_config.py
+
+Now in this file we have to Increase the "#c.NotebookApp.iopub_data_rate_limit" value to
+"100000000" and remove the # from the front.
+
+- c.NotebookApp.iopub_data_rate_limit = 100000000
+
+	3] - cd
+
+Step 6:
+
+Now install Apache Spark
+
+1] - pip3 install findspark
+
+2] - wget https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz
+
+
+Unzip it and move it to your /opt folder and create a symbolic link 
+
+- tar xvf spark-*
+
+- sudo mv spark-3.3.1-bin-hadoop3 /opt/spark-3.3.1
+
+- sudo ln -s /opt/spark-3.3.1 /opt/spark
+
+
+Now Configure Spark & Java & PySpark driver to use Jupyter Notebook
+
+- nano ~/.bashrc
+
+Now Enter following content here
+
+export SPARK_HOME=/opt/spark
+export PATH=$SPARK_HOME/bin:$PATH
+export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64'
+export PATH=$JAVA_HOME/bin:$PATH
+export PYSPARK_PYTHON=python3
+export PYSPARK_DRIVER_PYTHON=jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook --ip 0.0.0.0 --port=8888'
+
+
+After saving path, you need to run
+
+- source ~/.bashrc
+
+
+Step 7:
+
+Connecting the Jupyter Notebook from your Web-Browser
+
+First Enter following command
+
+- pyspark
+
+
+(Note:- As you can see, there is a URL given in the last line. Copy the contents of the URL after
+ token=, i.e. c6f2835c731caf65c9413a866113c015ae2a589c0a9abc31 in my case.)
+
+Now open Browser
+
+- https://<your public dns>:8888
+
+
+After opening Paste the copied token and create a new password if you want
+
+ 
+
+Step 8:
+
+To stop jupyter notebook services
+
+- jupyter notebook stop 8888
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
