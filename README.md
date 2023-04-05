@@ -3,6 +3,42 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Introduction
+
+The Centralized Data Warehouse and ML Solution for Banking Analytics is a project that combines a centralized repository for banking data with machine learning algorithms to enable predictive analysis.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Problem Statement
+
+Our client, a bank, has various data sources, that contain valuable data. However, the data is not well-organized, making it challenging to analyze and gain insights. Additionally, the client wants to use the data to create machine learning models to improve their business processes and provide better services to their customers.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Services And Tools
+
+AWS Cloud Services :- EC2 Instance, IAM, S3 Bucket, RDS Database, Redshift Cluster, SNS, Sagemaker
+
+Containerization-Orchestration Tool :- Docker, Kubernetes
+
+Visualization Tools :- Tableau or Power Bi
+
+MLOps Tool :- Kubeflow
+
+Programming Language :- Python
+
+Machine Learning - Scikit Learn
+
+Apache spark
+
+Apache Airflow
+
+Jupyter Notebook
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Architecture Diagram
+
 ![Project](https://user-images.githubusercontent.com/109748639/229056317-5b6175e8-9686-4d7b-80b7-fc23af280a35.jpg)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -394,4 +430,13 @@ task 5
 
 Read Data from ml-team s3 bucket to build ML model using Kubeflow.
 
-------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Screenshot
+
+## Apache Airflow Dags(Data Extraction Pipeline)
+
+![Screenshot_1](https://user-images.githubusercontent.com/109748639/229997344-83316377-15c3-4af3-a670-2795adf16f96.png)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
